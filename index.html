@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jashel | Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#ffffff; --ink:#0d0d0d; --muted:#555062; --line:#e4dcf2;
+  --mark:#c9a8ff; --accent:#6a1fd1; --card:#ffffff; --hl:#c9a8ff;
+  --head:"Bricolage Grotesque","Trebuchet MS",sans-serif;
+  --body:"Source Serif 4",Georgia,serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--paper:#0d0d0d; --ink:#ffffff; --muted:#b9b2c7; --line:#2a2238; --card:#17121f; --accent:#b68cff; --mark:#8b4dff; --hl:#5a2db3}
+}
+:root[data-theme="dark"]{--paper:#0d0d0d; --ink:#ffffff; --muted:#b9b2c7; --line:#2a2238; --card:#17121f; --accent:#b68cff; --mark:#8b4dff; --hl:#5a2db3}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:4.5rem}
+body{margin:0;background:var(--paper);color:var(--ink);font:1.125rem/1.65 var(--body);
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:32px 32px;background-attachment:fixed}
+body::before{content:"";position:fixed;inset:0;background:var(--paper);opacity:.82;z-index:-1}
+a{color:var(--accent)}
+:focus-visible{outline:3px solid var(--mark);outline-offset:3px}
+h1,h2,h3{font-family:var(--head);line-height:1.1;margin:0}
+.wrap{max-width:62rem;margin:0 auto;padding:0 1.25rem}
+section{padding:4.5rem 0 1rem}
+h2{font-size:clamp(1.8rem,5vw,2.6rem);margin-bottom:1.5rem;display:inline-block;
+  background:linear-gradient(transparent 62%,var(--hl) 62%)}
+
+/* nav */
+header.nav{position:sticky;top:0;z-index:10;background:var(--paper);border-bottom:2px solid var(--ink);
+  padding-top:env(safe-area-inset-top,0)}
+.nav .wrap{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding-top:.7rem;padding-bottom:.7rem}
+.logo{font:800 1.15rem var(--head);text-decoration:none;color:var(--ink)}
+.nav ul{display:flex;gap:1.1rem;list-style:none;margin:0;padding:0;font:500 1rem var(--head)}
+.nav ul a{color:var(--ink);text-decoration:none;padding:.3rem 0;border-bottom:3px solid transparent}
+.nav ul a:hover{border-color:var(--mark)}
+@media (max-width:520px){.nav ul{gap:.8rem;font-size:.92rem}.logo{display:none}}
+
+#theme{font-size:1.2rem;line-height:1;background:var(--card);color:var(--ink);border:2px solid var(--ink);width:2.6rem;height:2.6rem;cursor:pointer}
+#theme:hover{background:var(--mark)}
+/* home */
+#home{padding-top:4rem}
+.hero{display:grid;gap:2rem;grid-template-columns:1fr;align-items:center}
+@media (min-width:760px){.hero{grid-template-columns:1.5fr 1fr}}
+h1{font-size:clamp(2.8rem,10vw,5.6rem);font-weight:800;letter-spacing:-.03em}
+.hero p.lead{font-size:1.3rem;max-width:34rem;margin:1.2rem 0}
+.interest{font:500 1rem var(--head);display:inline-block;border:2px solid var(--ink);padding:.35rem .8rem;margin:.2rem .3rem .2rem 0;background:var(--card)}
+.photo{aspect-ratio:1/1;border:2px solid var(--ink);box-shadow:8px 8px 0 var(--mark);background:var(--card);
+  display:grid;place-items:center;overflow:hidden;font:500 1rem var(--head);color:var(--muted);text-align:center;padding:1rem}
+.photo img{width:100%;height:100%;object-fit:cover}
+.btn{display:inline-block;font:700 1rem var(--head);background:var(--ink);color:var(--paper);padding:.7rem 1.2rem;
+  text-decoration:none;border:2px solid var(--ink);margin:.4rem .5rem .4rem 0}
+.btn:hover{background:var(--mark);color:#0d0d0d}
+.btn.alt{background:transparent;color:var(--ink)}
+.btn.alt:hover{background:var(--mark);color:#0d0d0d}
+
+/* about */
+.two{display:grid;gap:2rem;grid-template-columns:1fr}
+@media (min-width:760px){.two{grid-template-columns:1.2fr 1fr}}
+.panel{background:var(--card);border:2px solid var(--ink);padding:1.3rem}
+.panel h3{font-size:1.25rem;margin-bottom:.8rem}
+.skill{margin:0 0 1rem}
+.skill div{display:flex;justify-content:space-between;font:500 1rem var(--head)}
+.skill small{font:italic 400 .95rem var(--body);color:var(--muted)}
+.bar{height:10px;border:2px solid var(--ink);margin-top:.3rem;background:var(--paper)}
+.bar i{display:block;height:100%;background:var(--accent)}
+
+/* projects */
+.projects{display:grid;gap:1.6rem;grid-template-columns:1fr}
+@media (min-width:760px){.projects{grid-template-columns:1fr 1fr}}
+.project{background:var(--card);border:2px solid var(--ink);display:flex;flex-direction:column}
+.shot{aspect-ratio:16/10;border-bottom:2px solid var(--ink);background:var(--paper);display:grid;place-items:center;
+  font:500 .95rem var(--head);color:var(--muted);text-align:center;padding:1rem;overflow:hidden}
+.shot img{width:100%;height:100%;object-fit:cover;object-position:top}
+.project .body{padding:1.2rem;flex:1;display:flex;flex-direction:column}
+.project h3{font-size:1.4rem;margin-bottom:.5rem}
+.project p{margin:.3rem 0}
+.project .tags{font:500 .9rem var(--head);color:var(--muted);margin:.6rem 0}
+.project .links{margin-top:auto;padding-top:.6rem}
+
+/* contact */
+.contact{font-size:1.2rem}
+.contact li{margin:.5rem 0}
+footer{margin-top:4rem;border-top:2px solid var(--ink);padding:1.5rem 0 calc(1.5rem + env(safe-area-inset-bottom,0));font:500 .95rem var(--head);color:var(--muted)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="#home">Jashel | Portfolio</a>
+    <nav aria-label="Main"><ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul></nav>
+    <button id="theme" type="button" aria-label="Switch to dark mode" title="Switch light/dark">&#127769;</button>
+  </div>
+</header>
+
+<main class="wrap">
+
+<!-- HOME -->
+<section id="home">
+  <div class="hero">
+    <div>
+      <h1>Jashel Bert Ann P. Gupita</h1>
+      <p class="lead">I'm a 4th year student at Cebu Eastern College Incorporated. I'm learning to build websites that are easy to read and work on any screen.</p>
+      <p><span class="interest">Front-end web development</span><span class="interest">UI design</span><span class="interest">Troubleshooting</span></p>
+      <a class="btn" href="#projects">See my projects</a>
+      <a class="btn alt" href="#contact">Contact me</a>
+    </div>
+    <!-- Put your photo at images/me.jpg, then it shows automatically -->
+    <div class="photo"><img src="images/me.png" alt="Portrait of Your Name" onerror="this.replaceWith('Add your photo as images/me.png')"></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <h2>About and skills</h2>
+  <div class="two">
+    <div>
+      <p>I grew up in Cebu City and became interested in computers when my auntie pursued Information Technology. Her interest in the field inspired me to learn more about computers and explore programming.</p>
+      <p>Outside school, I enjoy watching movies, cooking food, and making desserts. These hobbies have taught me patience, creativity, and attention to detail, which I also apply when coding and solving programming problems.</p>
+      <p>Right now, I can create simple web pages using HTML and CSS and add basic features using JavaScript. I still look up tutorials and references when I need help, but I am continuously learning and improving my coding skills, especially in writing cleaner and more organized code.</p>
+    </div>
+    <div class="panel">
+      <h3>Where I am today</h3>
+      <!-- Change the width % and the note to be honest about your level -->
+      <div class="skill"><div><span>HTML</span><small>comfortable</small></div><div class="bar"><i style="width:75%"></i></div></div>
+      <div class="skill"><div><span>CSS</span><small>comfortable, layouts still tricky</small></div><div class="bar"><i style="width:60%"></i></div></div>
+      <div class="skill"><div><span>JavaScript</span><small>beginner</small></div><div class="bar"><i style="width:35%"></i></div></div>
+      <div class="skill"><div><span>Git and GitHub</span><small>learning</small></div><div class="bar"><i style="width:30%"></i></div></div>
+      <div class="skill"><div><span>Capstone Project</span><small>learning</small></div><div class="bar"><i style="width:50%"></i></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <h2>Projects</h2>
+  <div class="projects">
+<article class="project">
+  <div class="shot">
+    <img src="images/tiny_prints.png" alt="Maria's Tiny Prints Website">
+  </div>
+  <div class="body">
+    <h3>Maria's Tiny Prints Website</h3>
+    <p>
+      A printing services website for Maria's Tiny Prints, featuring
+      a colorful homepage that showcases printing, photo printing,
+      editing, laminating, and other services. This project helped
+      me practice web development and website design.
+    </p>
+    <p><strong>My contribution:</strong>
+      I worked on the website layout, HTML structure, CSS styling,
+      and page design. I also used XAMPP to run the project locally
+      and test the website.
+    </p>
+    <p class="tags">HTML, CSS, JavaScript, XAMPP</p>
+  </div>
+</article>
+<article class="project">
+  <div class="shot">
+    <img src="images/egg.png" alt="Alberto's Fresh Eggs Website"
+         onerror="this.replaceWith('Add screenshot: images/egg.png')">
+  </div>
+
+  <div class="body">
+    <h3>Alberto's Fresh Eggs Website</h3>
+    <p>
+      A business website for Alberto's Fresh Eggs that presents
+      its egg products and provides customers with an easy way
+      to inquire and place orders through Facebook Messenger.
+      This project helped me learn how to create a business
+      website and organize product information.
+    </p>
+    <p><strong>My contribution:</strong>
+      I worked on the website layout, designed the pages,
+      displayed product information, and set up the local
+      development environment using XAMPP.
+    </p>
+    <p class="tags">HTML, CSS, JavaScript, PHP, MySQL, XAMPP</p>
+  </div>
+</article>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <h2>Contact</h2>
+  <p>Want to talk about my work or a class project? Send me a message.</p>
+  <ul class="contact">
+    <li>Email: <a href="mailto:jashelbertann23@gmail.com">jashelbertann23@gmail.com</a></li>
+    <li>GitHub: <a href="https://github.com/GupitaJBAP">github.com/GupitaJBAP</a></li>
+    <li>LinkedIn: <a href="https://www.linkedin.com/in/jashel-bert-ann-p-gupita">linkedin.com/in/jashel-bert-ann-p-gupita</a></li>
+  </ul>
+</section>
+
+</main>
+
+<footer><div class="wrap">&copy; <span id="yr">2026</span> Jashel Bert Ann P. Gupita.</div></footer>
+
+<script>
+document.getElementById('yr').textContent=new Date().getFullYear();
+(function(){
+  var root=document.documentElement,btn=document.getElementById('theme');
+  var dark=window.matchMedia('(prefers-color-scheme: dark)').matches;
+  try{var saved=localStorage.getItem('theme');if(saved)dark=(saved==='dark');}catch(e){}
+  function apply(){
+    root.setAttribute('data-theme',dark?'dark':'light');
+    btn.innerHTML=dark?'&#9728;&#65039;':'&#127769;';
+    btn.setAttribute('aria-label',dark?'Switch to light mode':'Switch to dark mode');
+  }
+  btn.addEventListener('click',function(){
+    dark=!dark;apply();
+    try{localStorage.setItem('theme',dark?'dark':'light');}catch(e){}
+  });
+  apply();
+})();
+</script>
+</body>
+</html>
